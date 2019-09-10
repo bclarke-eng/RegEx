@@ -31,10 +31,13 @@ with open("sample.txt", "r") as f:  # open the text file, and keep it open until
                 email_address_dict[email[0]] -= 1  # removes all duplicated email addresses from counts
                 email_domain_dict[email[1]] -= 1
 
-        sort_email_domain = sorted(email_domain_dict.items(), key=lambda x: x[1], reverse=True)  # sorts the list
+        sort_email_domain = sorted(email_domain_dict.items(), key=lambda x: x[1], reverse = True)  # sorts the list
         # of domains from most to least popular (switches the key from x[0] (the key) to x[1] (the value).)
 
-        print("\nThe 10 most popular email domains found are:\n")
-        print("    Domain", "Count")
-        for x in range(0, 10):
-            print(x + 1, ":", *sort_email_domain[x])
+        top = int(input("Please enter the minimum frequency you require:"))
+        print("Domain", " Count")
+        for domain in sort_email_domain:
+            if domain[1] < top:
+                break
+            else:
+                print(str(domain[0]), ":", str(domain[1]))
