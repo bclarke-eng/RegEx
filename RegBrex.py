@@ -6,7 +6,7 @@ url = "https://www.bbc.co.uk/news/uk-politics-49651969"
 response = requests.get(url)
 website_string = str(BeautifulSoup(response.text, "html.parser"))
 
-brex_find = re.findall(r"((brexit)|(Brexit))", website_string)
+brex_find = re.findall(r"((brexit)|(Brexit)|BREXIT)", website_string)
 # use a regular expression to find all instances of brexit or Brexit and store them in tuples.
 
 brex_find_dict = {}  # creates empty dictionary
