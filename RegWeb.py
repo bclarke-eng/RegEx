@@ -2,7 +2,7 @@ import re  # import the library for regular expressions
 import requests  # importing library  URL requests
 from bs4 import BeautifulSoup  # installing package that makes an htt request
 
-url = "https://researchportal.bath.ac.uk/en/persons/steven-davies/"
+url = "https://www.pristonmill.co.uk/contact-us/"
 response = requests.get(url)
 website_string = str(BeautifulSoup(response.text, "html.parser"))
 
@@ -38,7 +38,7 @@ sort_email_domain = sorted(email_domain_dict.items(), key=lambda x: x[1], revers
 top = int(input("Please enter the minimum frequency you require:"))
 print("Domain", " Count")
 for domain in sort_email_domain:
-    if domain[1] < top:
+    if domain[1] < top:  # doesn't print any domains where the frequency is less than the user requested.
         break
     else:
-        print(str(domain[0]), ":", str(domain[1]))
+        print(str(domain[0]), ":", str(domain[1]))  # printing formatted
