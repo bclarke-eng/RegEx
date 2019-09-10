@@ -10,5 +10,5 @@ with open("sample.txt", "r") as f:  # open the text file, and keep it open until
         counter = len(emails)  # the list of all emails that meet the criteria is stored in a list, so the number of
         # emails is the length of the list
 
-        print(emails)  # prints the list of all softwire emails
+        print(*emails)  # prints the list of all softwire emails
         print(counter)  # prints the number of softwire emails found
