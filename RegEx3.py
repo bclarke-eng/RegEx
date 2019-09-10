@@ -22,10 +22,19 @@ with open("sample.txt", "r") as f:  # open the text file, and keep it open until
 
             if email[0] in email_address_dict:  # if the [0] value of the email address tuple (the full email) has
                 # already been identified, the counter for that email address increases
-                email_address_dict[email[0]] += 1  # this essentially checks for duplicate addresses
+                email_address_dict[email[0]] += 1
 
             else:
                 email_address_dict[email[0]] = 1
 
-        for i, v in email_domain_dict.items():
-            print(i, v)  # prints the domain names and how many email addresses are in that domain in a nice format
+            if email_address_dict[email[0]] > 1:
+                email_address_dict[email[0]] -= 1  # removes all duplicated email addresses from counts
+                email_domain_dict[email[1]] -= 1
+
+        sort_email_domain = sorted(email_domain_dict.items(), key=lambda x: x[1], reverse = True)  # sorts the list
+        # of domains from most to least popular (switches the key from x[0] (the key) to x[1] (the value).)
+
+        print("\nThe 10 most popular email domains found are:\n")
+        print("    Domain", "Count")
+        for x in range(0, 10):
+            print(x+1, ":", *sort_email_domain[x])
